@@ -1,5 +1,6 @@
 import { Button, Stack, TextField } from "@mui/material"
 import { useState } from "react";
+import { Link } from 'react-router-dom'
 
 function DataInputPage() {
     // const [emailInput, setEmailInput] = useState('');
@@ -30,7 +31,9 @@ function DataInputPage() {
                 <TextField id="outlined-basic" label="Rebonded by" variant="outlined" value={rebondBy} onChange={(e) => setRebondBy(e.target.value)}/>
                 <TextField id="outlined-basic" label="Additional Comments" variant="outlined" value={addComment} onChange={(e) => setAddComment(e.target.value)}/>
             </Stack>
-            <Button variant="contained" onClick={onLoginClicked}>Log Out</Button>
+            <Button type='submit'>Submit</Button>
+            <Link to='/'><Button variant="contained" onClick={onLoginClicked}>Log Out</Button></Link>
+            
             
         </div>
     )
