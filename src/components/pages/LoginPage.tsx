@@ -3,6 +3,7 @@ import { useState } from "react";
 
 function LoginPage() {
     const [emailInput, setEmailInput] = useState('');
+    const [password, setPassword] = useState('');
 
     const onEmailInputChange = (event) => {
         setEmailInput(event.target.value)
@@ -17,7 +18,7 @@ function LoginPage() {
             <h1>Welcome Back</h1>
             <Stack spacing={2}>
                 <TextField id="outlined-basic" label="Email address" variant="outlined" value={emailInput} onChange={onEmailInputChange} />
-                <TextField id="outlined-basic" label="Password" variant="outlined" />
+                <TextField id="outlined-basic" label="Password" variant="outlined" value={password} onChange={(e) => setPassword(e.target.value)}/>
             </Stack>
             <Button variant="contained" onClick={onLoginClicked}>Log in</Button>
         </div>
