@@ -9,13 +9,23 @@ function LoginPage() {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
 
-    const style = {
-        body: {
-            backgroundColor: "#ecfccb"
+    const loginStyle = {
+        image: {
+
         },
-        password: {
-            backgroundColor: "grey"
+        body: {
+            backgroundColor: "#f3e8ff",
+            margin: 0,
+            width: '100%',
+            height: '100vh',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
         }
+        // password: {
+        //     backgroundColor: "#f3e8ff"
+        // }
     }
 
     //@ts-ignore
@@ -34,18 +44,24 @@ function LoginPage() {
     
     }
     return (
-        <div style={style.body}>
+        //@ts-ignore
+        <div style={loginStyle.body}>
             <img src={"./logo.png"} />
             <h1 style={heading}>Welcome Back</h1>
             <Stack spacing={2} direction={'column'}>
-                <FormTextFields id="outlined-basic" label="Email address" variant="outlined" value={emailInput} onChange={onEmailInputChange} />
+                <FormTextFields 
+                    id="outlined-basic" 
+                    label="Email address" 
+                    variant="outlined" value={emailInput} 
+                    onChange={onEmailInputChange} />
                 <FormTextFields
                     id="outlined-basic"
                     label="Password"
                     variant="outlined"
                     value={password}
+                    //@ts-ignore
                     onChange={(e) => setPassword(e.target.value)}
-                    style={style.password} 
+                  
                 />
             </Stack>
         

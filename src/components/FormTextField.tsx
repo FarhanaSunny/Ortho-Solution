@@ -10,7 +10,7 @@ export default function FormTextFields(props) {
       paddingBottom: 0,
       marginTop: 20,
       fontWeight: 500,
-      backgroundColor: "yellow",
+      backgroundColor: "#f8fafc",
       ...props.style
       };
   return (

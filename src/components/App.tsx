@@ -2,13 +2,9 @@ import LoginPage from './pages/LoginPage';
 import DataInputPage from './pages/DataInputPage';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 
-function App() {
-  const styles = {
-    loginPage: {
-      
-    }
-  };
 
+function App() {
+  
   const router = createBrowserRouter([
     {
       path: '/',
