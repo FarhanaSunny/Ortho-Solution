@@ -1,6 +1,6 @@
 import { Button, Stack, TextField } from "@mui/material"
 import { useState } from "react";
-import { Link } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 
 function DataInputPage() {
     // const [emailInput, setEmailInput] = useState('');
@@ -14,9 +14,11 @@ function DataInputPage() {
     const [toothNum, setToothNum] = useState('')
     const [rebondBy, setRebondBy] = useState('')
     const [addComment, setAddComment] = useState('')
+    const navigate = useNavigate();
 
     const onLoginClicked = () => {
         console.log('Logged Out!')
+        navigate('/')
     }
 
     return (
@@ -32,9 +34,7 @@ function DataInputPage() {
                 <TextField id="outlined-basic" label="Additional Comments" variant="outlined" value={addComment} onChange={(e) => setAddComment(e.target.value)}/>
             </Stack>
             <Button type='submit'>Submit</Button>
-            <Link to='/'><Button variant="contained" onClick={onLoginClicked}>Log Out</Button></Link>
-            
-            
+            <Button variant="contained" onClick={onLoginClicked}>Log Out</Button>
         </div>
     )
 }

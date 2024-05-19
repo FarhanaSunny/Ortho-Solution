@@ -2,20 +2,21 @@ import TextField from '@mui/material/TextField';
 
 // @ts-ignore
 export default function FormTextFields(props) {
+  console.log("props", props);
     const styles = {
-        textField: {
-            width: '90%',
-            marginLeft: 'auto',
-            marginRight: 'auto',            
-            paddingBottom: 0,
-            marginTop: 0,
-            fontWeight: 500
-        }
-    };
+      width: '60%',
+      marginLeft: 'auto',
+      marginRight: 'auto',            
+      paddingBottom: 0,
+      marginTop: 20,
+      fontWeight: 500,
+      backgroundColor: "yellow",
+      ...props.style
+      };
   return (
         <TextField
           required
-          style={styles.textField}
+          style={styles}
           id="outlined-required"
           label={props.label}
           defaultValue={props.defaultValue}
