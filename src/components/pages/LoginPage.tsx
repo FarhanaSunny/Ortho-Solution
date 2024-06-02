@@ -1,4 +1,5 @@
 import { Button, Stack } from "@mui/material";
+import Greeter from "../Greeter";
 import FormTextFields from "../FormTextField";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom"
@@ -8,15 +9,16 @@ function LoginPage() {
     const [emailInput, setEmailInput] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
+    
 
     const loginStyle = {
         image: {
 
         },
         body: {
-            backgroundColor: "#f3e8ff",
+            // backgroundColor: "#f3e8ff",
             margin: 0,
-            width: '100%',
+            width: '100vw',
             height: '100vh',
             display: 'flex',
             flexDirection: 'column',
@@ -57,6 +59,7 @@ function LoginPage() {
                 <FormTextFields
                     id="outlined-basic"
                     label="Password"
+                    type="password"
                     variant="outlined"
                     value={password}
                     //@ts-ignore
@@ -65,7 +68,7 @@ function LoginPage() {
                 />
             </Stack>
         
-            <Button variant="contained" onClick={onLoginClicked}>Log in</Button>
+            <Button variant="contained" onClick={onLoginClicked}>Log in</Button> 
 
         </div>
     

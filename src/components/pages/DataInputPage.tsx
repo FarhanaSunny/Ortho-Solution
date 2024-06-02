@@ -18,7 +18,6 @@ function DataInputPage() {
     }
     const datapageStyle = {
         body: {
-            backgroundColor: "#fffbeb",
             margin: 0,
             width: '100%',
             height: '100vh',
@@ -49,7 +48,8 @@ function DataInputPage() {
                 <TextField 
                            id="outlined-basic" 
                            label="Initially Bonded by" 
-                           variant="outlined" 
+                           variant="filled" 
+                           color="secondary"
                            value={initialBond} 
                            onChange={(e) => setInitialBond(e.target.value)}/>
                 <TextField 

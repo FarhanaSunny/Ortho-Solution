@@ -1,0 +1,22 @@
+[
+    {
+        "patientName": "John Doe",
+        "trackerNumber": 123,
+        "initiallyBondedBy": "AB",
+        "initialBondingDate": "2022-04-12",
+        "rebondedToothNo": 26,
+        "rebondedBy": "XY",
+        "rebondingDate": "2024-04-12",
+        "additionalComment": "bla bla"
+    },
+    {
+        "patientName": "John Doe2",
+        "trackerNumber": 1234,
+        "initiallyBondedBy": "AB",
+        "initialBondingDate": "2022-04-12",
+        "rebondedToothNo": 26,
+        "rebondedBy": "XY",
+        "rebondingDate": "2024-04-12",
+        "additionalComment": "bla bla"
+    }
+]

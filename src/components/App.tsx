@@ -1,9 +1,20 @@
 import LoginPage from './pages/LoginPage';
 import DataInputPage from './pages/DataInputPage';
+import ReportPage from './pages/ReportPage';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
+import { createTheme, ThemeProvider } from '@mui/material';
 
 
 function App() {
+
+  const theme = createTheme({
+    palette: {
+      background: {
+        default: '#f3e8ff',
+        paper: '#f3e8ff'
+      }
+    }
+  })
   
   const router = createBrowserRouter([
     {
@@ -13,11 +24,18 @@ function App() {
     {
       path: 'input',
       element: <DataInputPage />
+    },
+    {
+      path: 'report',
+      element: <ReportPage />
     }
+
   ])
 
   return (
-    <RouterProvider router={router} />
+    <ThemeProvider theme={theme}>
+      <RouterProvider router={router} />
+    </ThemeProvider>
   )
 }
 
