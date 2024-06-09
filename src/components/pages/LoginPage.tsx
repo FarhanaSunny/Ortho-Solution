@@ -66,9 +66,10 @@ function LoginPage() {
                     onChange={(e) => setPassword(e.target.value)}
                   
                 />
+                <Button variant="contained" onClick={onLoginClicked}>Log in</Button> 
             </Stack>
         
-            <Button variant="contained" onClick={onLoginClicked}>Log in</Button> 
+            
 
         </div>
     

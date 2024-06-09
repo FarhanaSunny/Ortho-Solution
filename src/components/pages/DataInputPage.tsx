@@ -11,11 +11,17 @@ function DataInputPage() {
     const [rebondBy, setRebondBy] = useState('')
     const [addComment, setAddComment] = useState('')
     const navigate = useNavigate();
+    
 
     const onLoginClicked = () => {
         console.log('Logged Out!')
         navigate('/')
     }
+    const onAdminClicked = () => {
+       
+        navigate('/report')
+    }
+   
     const datapageStyle = {
         body: {
             margin: 0,
@@ -70,9 +76,13 @@ function DataInputPage() {
                            variant="outlined" 
                            value={addComment} 
                            onChange={(e) => setAddComment(e.target.value)}/>
-            </Stack>
+            
+            
             <Button type='submit'>Submit</Button>
             <Button variant="contained" onClick={onLoginClicked}>Log Out</Button>
+            
+            <Button variant="contained" onClick={onAdminClicked}>Admin Page</Button>
+            </Stack>
         </div>
     )
 }
