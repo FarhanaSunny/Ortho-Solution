@@ -1,4 +1,5 @@
-import { Button, Stack, TextField } from "@mui/material"
+import { Button, Stack, TextField, Box, Typography, Avatar } from "@mui/material"
+import employee from '../../utils/api';
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
 
@@ -11,6 +12,7 @@ function DataInputPage() {
     const [rebondBy, setRebondBy] = useState('')
     const [addComment, setAddComment] = useState('')
     const navigate = useNavigate();
+    console.log('employee', employee);
     
 
     const onLoginClicked = () => {
@@ -36,7 +38,18 @@ function DataInputPage() {
     }
 
     return (
-        //@ts-ignore
+        <>
+        <p>Hello</p>
+        <Box sx={{ width: '100%', maxWidth: 500 }}>
+            <Typography variant="h6" gutterBottom>
+                {employee.name}
+            </Typography>
+            <Avatar 
+                alt="Abc Xyz"
+                src={employee.profilePicture}
+                sx={{ width: 56, height: 56 }}
+            />
+        </Box>
         <div style={datapageStyle.body}>
             <h1>Members and Admin's Page</h1>
             <Stack spacing={2}>
@@ -54,8 +67,7 @@ function DataInputPage() {
                 <TextField 
                            id="outlined-basic" 
                            label="Initially Bonded by" 
-                           variant="filled" 
-                           color="secondary"
+                           variant="outlined" 
                            value={initialBond} 
                            onChange={(e) => setInitialBond(e.target.value)}/>
                 <TextField 
@@ -84,6 +96,7 @@ function DataInputPage() {
             <Button variant="contained" onClick={onAdminClicked}>Admin Page</Button>
             </Stack>
         </div>
+        </>
     )
 }
 

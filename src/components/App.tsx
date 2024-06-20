@@ -15,7 +15,13 @@ function App() {
       }
     }
   })
-  
+
+  /**
+   * / -> <Dashboard> (if logged in, else go to /login)
+   * /login -> <Login>
+   * /admin -> <AdminDashboard>
+   * /:user -> <UserPage>
+   */
   const router = createBrowserRouter([
     {
       path: '/',
