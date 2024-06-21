@@ -1,7 +1,10 @@
-import { Button, Stack, TextField, Box, Typography, Avatar } from "@mui/material"
+import { Button, Stack, TextField, Box, Typography, Avatar, Container } from "@mui/material"
 import employee from '../../utils/api';
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
+import NavBar from "./NavBar";
+import SideBar from "./SideBar";
+
 
 function DataInputPage() {
  
@@ -39,9 +42,11 @@ function DataInputPage() {
 
     return (
         <>
-        <p>Hello</p>
-        <Box sx={{ width: '100%', maxWidth: 500 }}>
-            <Typography variant="h6" gutterBottom>
+        <NavBar/>
+        <Box>
+            <Stack direction ="row" spacing={2} justifyContent="space-between" >
+            <SideBar />
+            <Typography variant="h6"  bgcolor="pink" flex={2} p={2}>
                 {employee.name}
             </Typography>
             <Avatar 
@@ -49,6 +54,7 @@ function DataInputPage() {
                 src={employee.profilePicture}
                 sx={{ width: 56, height: 56 }}
             />
+            </Stack>
         </Box>
         <div style={datapageStyle.body}>
             <h1>Members and Admin's Page</h1>

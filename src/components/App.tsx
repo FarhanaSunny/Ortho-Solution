@@ -4,7 +4,6 @@ import ReportPage from './pages/ReportPage';
 import {createBrowserRouter, RouterProvider} from 'react-router-dom'
 import { createTheme, ThemeProvider } from '@mui/material';
 
-
 function App() {
 
   const theme = createTheme({
