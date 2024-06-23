@@ -9,15 +9,32 @@ import Records from "./Record";
 
 function DataInputPage() {
  
-    const [patientsinfo, setPatientInfo] = useState('')
+    const [patientsInfo, setPatientInfo] = useState('')
     const [date, setDate] = useState('')
     const [initialBond, setInitialBond] = useState('')
     const [toothNum, setToothNum] = useState('')
     const [rebondBy, setRebondBy] = useState('')
     const [addComment, setAddComment] = useState('')
+    const [showForm, setShowForm] = useState(false);
     const navigate = useNavigate();
     console.log('employee', currentEmployee);
     
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        // Handle form submission logic here, e.g., sending data to an API.
+        console.log({
+          patientsInfo,
+          date,
+          initialBond,
+          toothNum,
+          rebondBy,
+          addComment
+        });
+      };
+    
+      const handleShowForm = () => {
+        setShowForm(true);
+      };
 
     const onLoginClicked = () => {
         console.log('Logged Out!')
@@ -75,7 +92,13 @@ function DataInputPage() {
        </Stack> 
         <div style={datapageStyle.body}>
             <h1>Members and Admin's Page</h1>
-            <Stack spacing={2}>
+            {!showForm && (
+        <Button variant="contained" onClick={handleShowForm}>
+          Show Form
+        </Button>
+      )}
+      
+            {/* <Stack spacing={2}>
                 <TextField id="outlined-basic" 
                            label="Patient's Name/Tracker number" 
                            variant="outlined" 
@@ -113,11 +136,61 @@ function DataInputPage() {
                            onChange={(e) => setAddComment(e.target.value)}/>
             
             
+            <Button type='submit'>Submit</Button> */}
+            <Stack spacing={2}>
+            {showForm && (
+        <form onSubmit={handleSubmit}>
+          <Stack spacing={2}>
+            <TextField 
+              id="outlined-basic" 
+              label="Patient's Name/Tracker number" 
+              variant="outlined" 
+              value={patientsInfo} 
+              onChange={(e) => setPatientInfo(e.target.value)} 
+            />
+            <TextField 
+              id="outlined-basic" 
+              label="Date" 
+              variant="outlined" 
+              value={date} 
+              onChange={(e) => setDate(e.target.value)} 
+            />
+            <TextField 
+              id="outlined-basic" 
+              label="Initially Bonded by" 
+              variant="outlined" 
+              value={initialBond} 
+              onChange={(e) => setInitialBond(e.target.value)} 
+            />
+            <TextField 
+              id="outlined-basic" 
+              label="Tooth number" 
+              variant="outlined" 
+              value={toothNum} 
+              onChange={(e) => setToothNum(e.target.value)} 
+            />
+            <TextField 
+              id="outlined-basic" 
+              label="Rebonded by" 
+              variant="outlined" 
+              value={rebondBy} 
+              onChange={(e) => setRebondBy(e.target.value)} 
+            />
+            <TextField 
+              id="outlined-basic" 
+              label="Additional Comments" 
+              variant="outlined" 
+              value={addComment} 
+              onChange={(e) => setAddComment(e.target.value)} 
+            />
             <Button type='submit'>Submit</Button>
-            <Button variant="contained" onClick={onLoginClicked}>Log Out</Button>
+          </Stack>
+        </form>
+      )}
+          <Button variant="contained" onClick={onLoginClicked}>Log Out</Button>
+          <Button variant="contained" onClick={onAdminClicked}>Admin Page</Button>
+          </Stack>  
             
-            <Button variant="contained" onClick={onAdminClicked}>Admin Page</Button>
-            </Stack>
         </div>
         </>
     )
