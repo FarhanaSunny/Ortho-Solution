@@ -18,7 +18,7 @@ const NavBar = () => {
       <StyledToolbar>
         <Box sx={{ flexGrow: 1 }}>
           <Typography variant="h6">
-            Patient
+            Ortho Solution
           </Typography>
         </Box>
         <Box sx={{ display: "flex", justifyContent: "center", flexGrow: 1 }}>

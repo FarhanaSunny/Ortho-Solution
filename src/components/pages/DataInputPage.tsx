@@ -1,9 +1,10 @@
 import { Button, Stack, TextField, Box, Typography, Avatar, Container } from "@mui/material"
-import employee from '../../utils/api';
+import { currentEmployee, individualRecord, employeeList } from "../../utils/api";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom'
 import NavBar from "./NavBar";
 import SideBar from "./SideBar";
+import Records from "./Record";
 
 
 function DataInputPage() {
@@ -15,7 +16,7 @@ function DataInputPage() {
     const [rebondBy, setRebondBy] = useState('')
     const [addComment, setAddComment] = useState('')
     const navigate = useNavigate();
-    console.log('employee', employee);
+    console.log('employee', currentEmployee);
     
 
     const onLoginClicked = () => {
@@ -39,6 +40,8 @@ function DataInputPage() {
         }
        
     }
+    console.log('individualRecord', individualRecord);
+    console.log('employeeList', employeeList);
 
     return (
         <>
@@ -47,15 +50,29 @@ function DataInputPage() {
             <Stack direction ="row" spacing={2} justifyContent="space-between" >
             <SideBar />
             <Typography variant="h6"  bgcolor="pink" flex={2} p={2}>
-                {employee.name}
+                {currentEmployee.name}
             </Typography>
             <Avatar 
                 alt="Abc Xyz"
-                src={employee.profilePicture}
+                src={currentEmployee.profilePicture}
                 sx={{ width: 56, height: 56 }}
             />
             </Stack>
         </Box>
+        <Stack spacing={2}>
+        {individualRecord.map((item) => (
+                <Records
+                patientName ={item.patientName}
+                trackerNumber={item.trackerNumber}
+                initiallyBondedBy={item.initiallyBondedBy}
+                initialBondingDate={item.initialBondingDate}
+                rebondedToothNo={item.rebondedToothNo}
+                rebondingDate={item.rebondingDate}
+                additionalComment={item.additionalComment}
+                />
+
+            ))}
+       </Stack> 
         <div style={datapageStyle.body}>
             <h1>Members and Admin's Page</h1>
             <Stack spacing={2}>

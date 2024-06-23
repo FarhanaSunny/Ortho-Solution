@@ -102,11 +102,50 @@ const records = [
     }
 ];
 
-const employee = {
-    name: 'Abc Xyz',
+const employeeList = [
+    {
+    id: 100,
+    name: 'Jillian Yabsley',
+    role: 'member',
+    profilePicture: 'https://www.profilebakery.com/wp-content/uploads/2023/04/AI-Profile-Picture.jpg',
+   },
+   {
+    id: 200,
+    name: 'Samantha Tetford',
+    role: 'member',
+    profilePicture: 'https://www.profilebakery.com/wp-content/uploads/2023/04/AI-Profile-Picture.jpg',
+   },
+];
+
+const currentEmployee =  {
+    id: 100,
+    name: 'Jillian Yabsley',
     role: 'member',
     profilePicture: 'https://www.profilebakery.com/wp-content/uploads/2023/04/AI-Profile-Picture.jpg',
 };
+
+const individualRecord = [
+    {
+        "patientName": "John Doe",
+        "trackerNumber": 123,
+        "initiallyBondedBy": 200,
+        "initialBondingDate": "2022-04-12",
+        "rebondedToothNo": 26,
+        "rebondedBy": 100,
+        "rebondingDate": "2024-04-12",
+        "additionalComment": "bla bla"
+    },
+    {
+        "patientName": "John Doe2",
+        "trackerNumber": 789,
+        "initiallyBondedBy": 100,
+        "initialBondingDate": "2022-04-12",
+        "rebondedToothNo": 26,
+        "rebondedBy": 100,
+        "rebondingDate": "2024-04-12",
+        "additionalComment": "bla bla"
+    }
+];
 
 async function login() {
 
@@ -116,4 +155,4 @@ async function getPatientInfo(patientName) {
     records.find(record => record.patientName === patientName)
 }
 
-export default employee;
+export {currentEmployee, individualRecord, employeeList};

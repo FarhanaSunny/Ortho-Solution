@@ -36,7 +36,7 @@ function Records (props) {
             <p>Initial Bonding Date: {props.initiallyBondedBy}</p>
             </div>
             <p>Rebonded Tooth Number: {props.rebondedToothNo}</p>
-            <p>Rebonded By: {props.rebondedBy}</p>
+            {props.rebondedBy && <p>Rebonded By: {props.rebondedBy}</p>}
             <p>Rebonding Date: {props.rebondingDate}</p>
             <p>Additional Comment: {props.additionalComment}</p>
             </div>
