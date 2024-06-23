@@ -9,32 +9,32 @@ import Records from "./Record";
 
 function DataInputPage() {
  
-    const [patientsInfo, setPatientInfo] = useState('')
-    const [date, setDate] = useState('')
-    const [initialBond, setInitialBond] = useState('')
-    const [toothNum, setToothNum] = useState('')
-    const [rebondBy, setRebondBy] = useState('')
-    const [addComment, setAddComment] = useState('')
-    const [showForm, setShowForm] = useState(false);
+    // const [patientsInfo, setPatientInfo] = useState('')
+    // const [date, setDate] = useState('')
+    // const [initialBond, setInitialBond] = useState('')
+    // const [toothNum, setToothNum] = useState('')
+    // const [rebondBy, setRebondBy] = useState('')
+    // const [addComment, setAddComment] = useState('')
+    // const [showForm, setShowForm] = useState(false);
     const navigate = useNavigate();
     console.log('employee', currentEmployee);
     
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // Handle form submission logic here, e.g., sending data to an API.
-        console.log({
-          patientsInfo,
-          date,
-          initialBond,
-          toothNum,
-          rebondBy,
-          addComment
-        });
-      };
+    // const handleSubmit = (e) => {
+    //     e.preventDefault();
+    //     // Handle form submission logic here, e.g., sending data to an API.
+    //     console.log({
+    //       patientsInfo,
+    //       date,
+    //       initialBond,
+    //       toothNum,
+    //       rebondBy,
+    //       addComment
+    //     });
+    //   };
     
-      const handleShowForm = () => {
-        setShowForm(true);
-      };
+    //   const handleShowForm = () => {
+    //     setShowForm(true);
+    //   };
 
     const onLoginClicked = () => {
         console.log('Logged Out!')
@@ -45,18 +45,18 @@ function DataInputPage() {
         navigate('/report')
     }
    
-    const datapageStyle = {
-        body: {
-            margin: 0,
-            width: '100%',
-            height: '100vh',
-            display: 'flex',
-            flexDirection: 'column',
-            alignItems: 'center',
-            justifyContent: 'center',
-        }
+    // const datapageStyle = {
+    //     body: {
+    //         margin: 0,
+    //         width: '100%',
+    //         height: '100vh',
+    //         display: 'flex',
+    //         flexDirection: 'column',
+    //         alignItems: 'center',
+    //         justifyContent: 'center',
+    //     }
        
-    }
+    // }
     console.log('individualRecord', individualRecord);
     console.log('employeeList', employeeList);
 
@@ -89,7 +89,8 @@ function DataInputPage() {
                 />
 
             ))}
-       </Stack> 
+            </Stack>
+       {/* </Stack> 
         <div style={datapageStyle.body}>
             <h1>Members and Admin's Page</h1>
             {!showForm && (
@@ -97,7 +98,7 @@ function DataInputPage() {
           Show Form
         </Button>
       )}
-      
+       */}
             {/* <Stack spacing={2}>
                 <TextField id="outlined-basic" 
                            label="Patient's Name/Tracker number" 
@@ -137,7 +138,7 @@ function DataInputPage() {
             
             
             <Button type='submit'>Submit</Button> */}
-            <Stack spacing={2}>
+            {/* <Stack spacing={2}>
             {showForm && (
         <form onSubmit={handleSubmit}>
           <Stack spacing={2}>
@@ -186,12 +187,13 @@ function DataInputPage() {
             <Button type='submit'>Submit</Button>
           </Stack>
         </form>
-      )}
+      )} */}
+      <Stack spacing={2}>
           <Button variant="contained" onClick={onLoginClicked}>Log Out</Button>
           <Button variant="contained" onClick={onAdminClicked}>Admin Page</Button>
           </Stack>  
             
-        </div>
+        {/* </div> */}
         </>
     )
 }
