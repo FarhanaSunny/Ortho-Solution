@@ -1,13 +1,36 @@
 import { Button, Stack, TextField, Box, Typography, Avatar, Container } from "@mui/material"
-import { currentEmployee, individualRecord, employeeList } from "../../utils/api";
-import { useState } from "react";
-import { useNavigate } from 'react-router-dom'
+import { getEmployee, getAllUserRecords} from "../../utils/api";
+import { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 import NavBar from "./NavBar";
 import SideBar from "./SideBar";
 import Records from "./Record";
 
 
 function DataInputPage() {
+
+    const [currentEmployee, setCurrentEmployee] = useState(null);
+    const [individualRecord, setIndividualRecord] = useState(null);
+    const [filteredRecords, setFilteredRecords] = useState(null);
+
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const employeeData = await getEmployee(100);
+                const userRecords = await getAllUserRecords();
+                setCurrentEmployee(employeeData);
+                setIndividualRecord(userRecords);
+                console.log('employee', employeeData);
+                console.log('individualRecord', userRecords);
+            } catch (error) {
+                console.error('Error fetching data:', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
  
     // const [patientsInfo, setPatientInfo] = useState('')
     // const [date, setDate] = useState('')
@@ -16,8 +39,7 @@ function DataInputPage() {
     // const [rebondBy, setRebondBy] = useState('')
     // const [addComment, setAddComment] = useState('')
     // const [showForm, setShowForm] = useState(false);
-    const navigate = useNavigate();
-    console.log('employee', currentEmployee);
+    // const navigate = useNavigate();
     
     // const handleSubmit = (e) => {
     //     e.preventDefault();
@@ -38,12 +60,12 @@ function DataInputPage() {
 
     const onLoginClicked = () => {
         console.log('Logged Out!')
-        navigate('/')
+        // navigate('/')
     }
-    const onAdminClicked = () => {
+    // const onAdminClicked = () => {
        
-        navigate('/report')
-    }
+    //     navigate('/report')
+    // }
    
     // const datapageStyle = {
     //     body: {
@@ -57,12 +79,29 @@ function DataInputPage() {
     //     }
        
     // }
-    console.log('individualRecord', individualRecord);
-    console.log('employeeList', employeeList);
 
+    if (!currentEmployee || !individualRecord) {
+        return <div>Loading...</div>;
+    }
+
+    const handleSearch = (query) => {
+        console.log('query', query);
+        if (query === '') {
+            setFilteredRecords(individualRecord);
+        } else {
+            const filtered = individualRecord.filter(record => {
+                console.log('record', record)
+                return record.trackerNumber.toString().includes(query)
+            }
+            );
+            setFilteredRecords(filtered);
+        }
+    };
+      
+console.log('individualRecord', individualRecord) 
     return (
         <>
-        <NavBar/>
+        <NavBar onSearch={handleSearch} />
         <Box>
             <Stack direction ="row" spacing={2} justifyContent="space-between" >
             <SideBar />
@@ -77,7 +116,7 @@ function DataInputPage() {
             </Stack>
         </Box>
         <Stack spacing={2}>
-        {individualRecord.map((item) => (
+        {filteredRecords.map((item) => (
                 <Records
                 patientName ={item.patientName}
                 trackerNumber={item.trackerNumber}
@@ -190,7 +229,7 @@ function DataInputPage() {
       )} */}
       <Stack spacing={2}>
           <Button variant="contained" onClick={onLoginClicked}>Log Out</Button>
-          <Button variant="contained" onClick={onAdminClicked}>Admin Page</Button>
+          {/* <Button variant="contained" onClick={onAdminClicked}>Admin Page</Button> */}
           </Stack>  
             
         {/* </div> */}

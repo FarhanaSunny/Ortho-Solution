@@ -99,7 +99,9 @@ const records = [
         "rebondedBy": "XY",
         "rebondingDate": "2024-04-12",
         "additionalComment": "bla bla"
-    }
+    },
+    
+    
 ];
 
 const employeeList = [
@@ -115,14 +117,38 @@ const employeeList = [
     role: 'member',
     profilePicture: 'https://www.profilebakery.com/wp-content/uploads/2023/04/AI-Profile-Picture.jpg',
    },
-];
-
-const currentEmployee =  {
-    id: 100,
-    name: 'Jillian Yabsley',
+   {
+    id: 300,
+    name: 'Patricia Penton',
     role: 'member',
     profilePicture: 'https://www.profilebakery.com/wp-content/uploads/2023/04/AI-Profile-Picture.jpg',
-};
+   },
+   {
+    id: 400,
+    name: 'Katie Paynn',
+    role: 'member',
+    profilePicture: 'https://www.profilebakery.com/wp-content/uploads/2023/04/AI-Profile-Picture.jpg',
+   },
+   {
+    id: 500,
+    name: 'Terri Eddison',
+    role: 'member',
+    profilePicture: 'https://www.profilebakery.com/wp-content/uploads/2023/04/AI-Profile-Picture.jpg',
+   },
+   {
+    id: 600,
+    name: 'Christa Oliver',
+    role: 'admin',
+    profilePicture: 'https://www.profilebakery.com/wp-content/uploads/2023/04/AI-Profile-Picture.jpg',
+   }
+];
+
+// const currentEmployee =  {
+//     id: 100,
+//     name: 'Jillian Yabsley',
+//     role: 'member',
+//     profilePicture: 'https://www.profilebakery.com/wp-content/uploads/2023/04/AI-Profile-Picture.jpg',
+// };
 
 const individualRecord = [
     {
@@ -144,15 +170,38 @@ const individualRecord = [
         "rebondedBy": 100,
         "rebondingDate": "2024-04-12",
         "additionalComment": "bla bla"
-    }
+    },
+    
+
 ];
 
-async function login() {
+const updatedRecords = individualRecord.map(record => {
+    const initiallyBondedBy = employeeList.find(employee => employee.id === record.initiallyBondedBy)?.name || record.initiallyBondedBy;
+    const rebondedBy = employeeList.find(employee => employee.id === record.rebondedBy)?.name || record.rebondedBy;
+  
+    return {
+      ...record,
+      initiallyBondedBy,
+      rebondedBy,
+    };
+  });
 
+export async function login(loginInfo: any) {
+    // const user = employeeList.find(employee => employee.id === loginInfo.id && employee.)
 }
 
-async function getPatientInfo(patientName) {
+export async function getPatientInfo(patientName) {
     records.find(record => record.patientName === patientName)
 }
 
-export {currentEmployee, individualRecord, employeeList};
+export async function getEmployee(id: number) {
+    return employeeList.find(employee => employee.id === id)
+}
+
+export async function getAllUserRecords() {
+    return updatedRecords;
+}
+
+export async function getAllEmployees () {
+    return employeeList
+}
